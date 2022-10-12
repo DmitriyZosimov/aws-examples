@@ -1,0 +1,24 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Lambda application that calls the Lambda API.
+Resources:
+  S3GetObject:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3-get-object/build/libs/s3-get-object-1.0-SNAPSHOT.jar
+      Handler: aws.lambda.s3.S3GetObject
+      Runtime: java11
+      Description: Get Object from S3 from incoming bucket name and object name
+      MemorySize: 512
+      Timeout: 10
+      # Function's execution role
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - S3GetObjectOnly
+      Tracing: Active
+      Events:
+        AwsExampleGateway:
+          Type: Api
+          Properties:
+            Path: /s3/get/{bucket}/{object}
+            Method: get

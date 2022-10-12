@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = 11
+
+dependencies {
+    implementation amazonaws.aws_lambda_java_core, amazonaws.aws_lambda_java_events, amazonaws.java_sdk_s3
+}
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes "Main-Class": "aws.lambda.s3.S3GetObject"
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+task buildZip(type: Zip) {
+    from compileJava
+    from processResources
+    into('lib') {
+        from configurations.runtimeClasspath
+    }
+}
