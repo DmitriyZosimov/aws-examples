@@ -14,11 +14,11 @@ Resources:
       # Function's execution role
       Policies:
         - AWSLambdaBasicExecutionRole
-        - S3GetObjectOnly
+        - arn:aws:iam::119939467338:policy/S3GetObjectOnly
       Tracing: Active
       Events:
         AwsExampleGateway:
           Type: Api
           Properties:
-            Path: /s3/get/{bucket}/{object}
+            Path: /s3/get/{bucket}/{object+}
             Method: get
