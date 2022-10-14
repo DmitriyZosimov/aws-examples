@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: Lamda functions, Module Serverless.
 Resources:
-  S3GetObject:
+  Task1:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: lambda-task-1/build/distributions/lambda-task-1-1.0-SNAPSHOT.zip
