@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = 11
+
+dependencies {
+    implementation spring_boot.starter_web,
+            amazonaws.java_sdk_sns
+
+    compileOnly lombok.lombok
+    annotationProcessor lombok.lombok
+}

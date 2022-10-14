@@ -1,0 +1,26 @@
+subprojects {
+    group 'aws.course'
+    version '1.0-SNAPSHOT'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+ext {
+    amazonaws = [
+            aws_lambda_java_core    : "com.amazonaws:aws-lambda-java-core:$lambdaJavaCoreVersion",
+            aws_lambda_java_events  : "com.amazonaws:aws-lambda-java-events:$lambdaJavaEventsVersion",
+            java_sdk_s3             : "com.amazonaws:aws-java-sdk-s3:$javaSdkVersion",
+            java_sdk_sns            : "com.amazonaws:aws-java-sdk-sns:$javaSdkVersion"
+    ]
+
+    lombok = [
+            lombok  :   "org.projectlombok:lombok:$lombokVersion"
+    ]
+
+    spring_boot = [
+            starter_web : "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    ]
+}
