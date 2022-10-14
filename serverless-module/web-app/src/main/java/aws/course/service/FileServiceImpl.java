@@ -31,11 +31,11 @@ public class FileServiceImpl implements FileService {
 
     private static final String IMAGE_UPLOAD_ACTION = "Image was uploaded";
 
-    private FileMetadataRepository dao;
-    private TransferManager transferManager;
-    private AmazonS3 amazonS3;
-    private S3Properties s3Properties;
-    private NotificationService notificationService;
+    private final FileMetadataRepository dao;
+    private final TransferManager transferManager;
+    private final AmazonS3 amazonS3;
+    private final S3Properties s3Properties;
+    private final NotificationService notificationService;
 
     @Override
     public boolean upload(MultipartFile file) {

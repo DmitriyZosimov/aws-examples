@@ -3,7 +3,6 @@ package aws.course.controller;
 import aws.course.service.FileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ByteArrayResource;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,10 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 public class FileController {
 
-    private FileService fileService;
+    private final FileService fileService;
 
-
-    @PostMapping(consumes = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    @PostMapping
     public ResponseEntity upload(@RequestParam("file")MultipartFile file) {
         return fileService.upload(file) ? ResponseEntity.ok("The file was uploaded"):
                 ResponseEntity.badRequest().body("Something went wrong");

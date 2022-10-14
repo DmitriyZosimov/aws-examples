@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class SNSSubscriptionController {
 
-    private SNSSubscriptionService service;
+    private final SNSSubscriptionService service;
 
     @PostMapping("/{email}")
     public void subscribeEmail(@PathVariable String email) {

@@ -9,7 +9,7 @@ sqs:
   sqs-queue-name: lambda-uploads-notification-queue
 spring:
   datasource:
-    url: jdbc:postgresql://lambda.crb6ffkk43cg.us-east-1.rds.amazonaws.com/lambda
+    url: jdbc:postgresql://lambda.crb6ffkk43cg.us-east-1.rds.amazonaws.com:5432/lambda
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver

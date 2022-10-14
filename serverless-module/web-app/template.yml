@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Lamda functions, Module Serverless.
+Resources:
+  S3GetObject:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambda-task-1/build/distributions/lambda-task-1-1.0-SNAPSHOT.zip
+      Handler: aws.lambda.task1.FileUploadHandler
+      Runtime: java11
+      Description: read sqs messages and send notification (sns)
+      MemorySize: 512
+      Timeout: 10
+      # Function's execution role
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AmazonSQSFullAccess
+        - AmazonSNSFullAccess

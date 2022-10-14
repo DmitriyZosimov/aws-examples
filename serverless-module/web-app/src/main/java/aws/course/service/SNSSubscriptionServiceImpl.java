@@ -17,8 +17,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SNSSubscriptionServiceImpl implements SNSSubscriptionService {
 
-    private AmazonSNS snsClient;
-    private SNSClientProperties snsClientProperties;
+    private final AmazonSNS snsClient;
+    private final SNSClientProperties snsClientProperties;
 
 
     @Override

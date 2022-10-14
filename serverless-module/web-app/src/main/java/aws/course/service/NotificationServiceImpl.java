@@ -14,8 +14,8 @@ import org.springframework.web.server.ResponseStatusException;
 @RequiredArgsConstructor
 public class NotificationServiceImpl implements NotificationService {
 
-    private SQSProperties sqsProperties;
-    private AmazonSQS amazonSQS;
+    private final SQSProperties sqsProperties;
+    private final AmazonSQS amazonSQS;
 
     @Override
     public void sendMessageToQueue(String message) {

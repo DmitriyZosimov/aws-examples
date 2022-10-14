@@ -1,18 +1,23 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version "$springBootVersion"
 }
 
 sourceCompatibility = 11
 
+bootJar.mainClassName = 'aws.course.WebApplication'
+
 dependencies {
+    compileOnly lombok.lombok
+    annotationProcessor lombok.lombok
+    
     implementation spring_boot.starter_web,
             spring_boot.starter_data_jpa,
+            spring_boot.starter_jersey,
             spring_boot.starter_hateoas,
             amazonaws.java_sdk_sns,
             amazonaws.java_sdk_s3,
-            apache_commons.commons_io,
-            postgresql.postgresql
+            apache_commons.commons_io
 
-    compileOnly lombok.lombok
-    annotationProcessor lombok.lombok
+    runtimeOnly postgresql.postgresql
 }
