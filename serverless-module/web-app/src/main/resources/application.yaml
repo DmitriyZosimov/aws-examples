@@ -1,0 +1,22 @@
+s3:
+  bucket-name: dmitriy-zosimov-lambda
+  region: us-east-1
+sns:
+  region: us-east-1
+  topic-arn: arn:aws:sns:us-east-1:119939467338:lambda-uploads-notification-topic
+sqs:
+  region: us-east-1
+  sqs-queue-name: lambda-uploads-notification-queue
+spring:
+  datasource:
+    url: jdbc:postgresql://lambda.crb6ffkk43cg.us-east-1.rds.amazonaws.com/lambda
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL10Dialect
+        ddl-auto: create
+    generate-ddl: true
+    show-sql: true

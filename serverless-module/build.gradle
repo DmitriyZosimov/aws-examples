@@ -16,11 +16,21 @@ ext {
             java_sdk_sns            : "com.amazonaws:aws-java-sdk-sns:$javaSdkVersion"
     ]
 
+    apache_commons = [
+            commons_io : "commons-io:commons-io:$apacheCommonsIOVersion"
+    ]
+
     lombok = [
             lombok  :   "org.projectlombok:lombok:$lombokVersion"
     ]
 
+    postgresql = [
+            postgresql  :   "org.postgresql:postgresql:$postgresqlVersion"
+    ]
+
     spring_boot = [
-            starter_web : "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+            starter_web : "org.springframework.boot:spring-boot-starter-web:$springBootVersion",
+            starter_data_jpa : "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion",
+            starter_hateoas : "org.springframework.boot:spring-boot-starter-hateoas:$springBootVersion"
     ]
 }

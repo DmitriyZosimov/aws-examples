@@ -6,7 +6,12 @@ sourceCompatibility = 11
 
 dependencies {
     implementation spring_boot.starter_web,
-            amazonaws.java_sdk_sns
+            spring_boot.starter_data_jpa,
+            spring_boot.starter_hateoas,
+            amazonaws.java_sdk_sns,
+            amazonaws.java_sdk_s3,
+            apache_commons.commons_io,
+            postgresql.postgresql
 
     compileOnly lombok.lombok
     annotationProcessor lombok.lombok
