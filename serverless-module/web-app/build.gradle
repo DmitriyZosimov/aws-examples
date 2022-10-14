@@ -10,13 +10,14 @@ bootJar.mainClassName = 'aws.course.WebApplication'
 dependencies {
     compileOnly lombok.lombok
     annotationProcessor lombok.lombok
-    
+
     implementation spring_boot.starter_web,
             spring_boot.starter_data_jpa,
             spring_boot.starter_jersey,
             spring_boot.starter_hateoas,
             amazonaws.java_sdk_sns,
             amazonaws.java_sdk_s3,
+            amazonaws.aws_java_sdk_lambda,
             apache_commons.commons_io
 
     runtimeOnly postgresql.postgresql

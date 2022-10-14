@@ -11,6 +11,7 @@ subprojects {
 ext {
     amazonaws = [
             aws_lambda_java_core    : "com.amazonaws:aws-lambda-java-core:$lambdaJavaCoreVersion",
+            aws_java_sdk_lambda     : "com.amazonaws:aws-java-sdk-lambda:$javaSdkVersion",
             aws_lambda_java_events  : "com.amazonaws:aws-lambda-java-events:$lambdaJavaEventsVersion",
             java_sdk_s3             : "com.amazonaws:aws-java-sdk-s3:$javaSdkVersion",
             java_sdk_sns            : "com.amazonaws:aws-java-sdk-sns:$javaSdkVersion"

@@ -1,10 +1,9 @@
-package aws.lambda.task1;
+package aws.lambda.task2;
 
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.amazonaws.services.sns.AmazonSNS;
 import com.amazonaws.services.sns.AmazonSNSClientBuilder;
@@ -17,10 +16,11 @@ import com.amazonaws.services.sqs.model.ReceiveMessageRequest;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class FileUploadHandler implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
+public class FileUploadHandler implements RequestHandler<Map<String, Object>, APIGatewayProxyResponseEvent> {
 
     private static final String SNS_QUEUE_NAME = "lambda-uploads-notification-queue";
     private static final String TOPIC_ARN = "arn:aws:sns:us-east-1:119939467338:lambda-uploads-notification-topic";
@@ -33,14 +33,19 @@ public class FileUploadHandler implements RequestHandler<APIGatewayProxyRequestE
     private String queueUrl;
 
     @Override
-    public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent input, Context context) {
+    public APIGatewayProxyResponseEvent handleRequest(Map<String, Object> input, Context context) {
+        Object detail = input.get("detail-type");
+        String detailType = detail == null ? "API" : String.valueOf(detail);
         logger = context.getLogger();
 
         List<Message> messages = readMessages();
-        sendNotification(messages);
-        deleteMessages(messages);
+        if (!messages.isEmpty()) {
+            sendNotification(messages);
+            deleteMessages(messages);
+        }
 
         logger.log("Handled Request for ARN = " + TOPIC_ARN
+                + ";\nRequest Source = " + detailType
                 + ";\nFunction Name = " + context.getFunctionName()
                 + ";\nProcessed Messages count = " + messages.size()
                 + ";\nRemaining Time in millis = " + context.getRemainingTimeInMillis());

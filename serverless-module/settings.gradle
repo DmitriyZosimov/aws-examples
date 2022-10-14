@@ -1,4 +1,5 @@
 rootProject.name = 'serverless-module'
 include 'web-app'
 include 'lambda-task-1'
+include 'lambda-task-2'
 

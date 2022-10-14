@@ -7,6 +7,9 @@ sns:
 sqs:
   region: us-east-1
   sqs-queue-name: lambda-uploads-notification-queue
+lambda:
+  region: us-east-1
+  function-arn: arn:aws:lambda:us-east-1:119939467338:function:lambda-functions-LambdaUploadsBatchNotifier-SfOWSqIreON9
 spring:
   datasource:
     url: jdbc:postgresql://lambda.crb6ffkk43cg.us-east-1.rds.amazonaws.com:5432/lambda

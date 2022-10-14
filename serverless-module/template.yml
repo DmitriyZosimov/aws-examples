@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: Lamda functions, Module Serverless.
 Resources:
-  Task1:
+  LambdaUploadsBatchNotifier:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: lambda-task-1/build/distributions/lambda-task-1-1.0-SNAPSHOT.zip
@@ -10,9 +10,22 @@ Resources:
       Runtime: java11
       Description: read sqs messages and send notification (sns)
       MemorySize: 512
-      Timeout: 10
+      Timeout: 100
       # Function's execution role
       Policies:
         - AWSLambdaBasicExecutionRole
         - AmazonSQSFullAccess
         - AmazonSNSFullAccess
+  LambdaS3Events:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: lambda-task-2/build/distributions/lambda-task-2-1.0-SNAPSHOT.zip
+      Handler: aws.lambda.task2.S3EventHandler
+      Runtime: java11
+      Description: read s3 events
+      MemorySize: 512
+      Timeout: 100
+      # Function's execution role
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AmazonS3FullAccess
