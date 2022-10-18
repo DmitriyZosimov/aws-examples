@@ -13,7 +13,7 @@ public class S3EventHandler implements RequestHandler<S3Event, APIGatewayProxyRe
         LambdaLogger log = context.getLogger();
         input.getRecords().stream()
                 .map(record -> record.getS3().getObject().getKey())
-                .forEach(key -> log.log("The file uploaded " + key));
+                .forEach(key -> log.log("The file uploaded " + key + ";\nThis is The NEWEST VERSION OF THIS FUNCTION"));
 
         return new APIGatewayProxyResponseEvent()
                 .withStatusCode(200)

@@ -48,7 +48,8 @@ public class FileUploadHandler implements RequestHandler<Map<String, Object>, AP
                 + ";\nRequest Source = " + detailType
                 + ";\nFunction Name = " + context.getFunctionName()
                 + ";\nProcessed Messages count = " + messages.size()
-                + ";\nRemaining Time in millis = " + context.getRemainingTimeInMillis());
+                + ";\nRemaining Time in millis = " + context.getRemainingTimeInMillis()
+                + ";\nThis is The NEWEST VERSION OF THIS FUNCTION");
 
         return new APIGatewayProxyResponseEvent()
                 .withStatusCode(200)

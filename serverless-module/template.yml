@@ -16,6 +16,9 @@ Resources:
         - AWSLambdaBasicExecutionRole
         - AmazonSQSFullAccess
         - AmazonSNSFullAccess
+      AutoPublishAlias: live
+      DeploymentPreference:
+        Type: AllAtOnce
   LambdaS3Events:
     Type: AWS::Serverless::Function
     Properties:
@@ -29,3 +32,6 @@ Resources:
       Policies:
         - AWSLambdaBasicExecutionRole
         - AmazonS3FullAccess
+      AutoPublishAlias: live
+      DeploymentPreference:
+        Type: AllAtOnce
