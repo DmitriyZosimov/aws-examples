@@ -1,4 +1,4 @@
-package aws.lambda.task2;
+package aws.lambda.task1;
 
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.lambda.runtime.Context;
