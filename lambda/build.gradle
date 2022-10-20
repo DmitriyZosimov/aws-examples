@@ -12,6 +12,7 @@ ext {
     amazonaws = [
             aws_lambda_java_core    : "com.amazonaws:aws-lambda-java-core:$lambdaJavaCoreVersion",
             aws_lambda_java_events    : "com.amazonaws:aws-lambda-java-events:$lambdaJavaEventsVersion",
-            java_sdk_s3             : "com.amazonaws:aws-java-sdk-s3:$javaSdkVersion"
+            java_sdk_s3             : "com.amazonaws:aws-java-sdk-s3:$javaSdkVersion",
+            cloudfront             : "com.amazonaws:aws-java-sdk-cloudfront:$javaSdkVersion"
     ]
 }

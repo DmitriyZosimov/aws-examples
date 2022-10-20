@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Lambda application that calls the Lambda API.
+Resources:
+  S3FolderCreationEvent:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: build/distributions/s3-folder-creation-event-1.0-SNAPSHOT.zip
+      Handler: aws.lambda.s3.S3FolderCreationEventHandler
+      Runtime: java11
+      Description: Get Object from S3 from incoming bucket name and object name
+      MemorySize: 512
+      Timeout: 30
+      # Function's execution role
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - arn:aws:iam::119939467338:policy/S3FinalTaskReadOnly
+        - CloudFrontFullAccess
